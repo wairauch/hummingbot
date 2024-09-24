@@ -58,12 +58,13 @@ ORDER_STATE = {
 ORDER_TYPE_MAP = {
     OrderType.LIMIT: "limit",
     OrderType.MARKET: "market",
+    OrderType.LIMIT_MAKER: "post_only",
 }
 
 NO_LIMIT = sys.maxsize
 
 RATE_LIMITS = [
-    RateLimit(WS_CONNECTION_LIMIT_ID, limit=1, time_interval=1),
+    RateLimit(WS_CONNECTION_LIMIT_ID, limit=3, time_interval=1),
     RateLimit(WS_REQUEST_LIMIT_ID, limit=100, time_interval=10),
     RateLimit(WS_SUBSCRIPTION_LIMIT_ID, limit=240, time_interval=60 * 60),
     RateLimit(WS_LOGIN_LIMIT_ID, limit=1, time_interval=15),
@@ -71,9 +72,9 @@ RATE_LIMITS = [
     RateLimit(limit_id=OKX_INSTRUMENTS_PATH, limit=20, time_interval=2),
     RateLimit(limit_id=OKX_TICKER_PATH, limit=20, time_interval=2),
     RateLimit(limit_id=OKX_ORDER_BOOK_PATH, limit=20, time_interval=2),
-    RateLimit(limit_id=OKX_PLACE_ORDER_PATH, limit=60, time_interval=2),
-    RateLimit(limit_id=OKX_ORDER_DETAILS_PATH, limit=60, time_interval=2),
-    RateLimit(limit_id=OKX_ORDER_CANCEL_PATH, limit=60, time_interval=2),
+    RateLimit(limit_id=OKX_PLACE_ORDER_PATH, limit=20, time_interval=2),
+    RateLimit(limit_id=OKX_ORDER_DETAILS_PATH, limit=20, time_interval=2),
+    RateLimit(limit_id=OKX_ORDER_CANCEL_PATH, limit=20, time_interval=2),
     RateLimit(limit_id=OKX_BATCH_ORDER_CANCEL_PATH, limit=300, time_interval=2),
     RateLimit(limit_id=OKX_BALANCE_PATH, limit=10, time_interval=2),
     RateLimit(limit_id=OKX_TRADE_FILLS_PATH, limit=60, time_interval=2),
